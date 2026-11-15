@@ -74,6 +74,67 @@ elementos.forEach(function (el) { observador.observe(el); });
 /* ---------- Año del pie de página ---------- */
 var anio = document.querySelector("[data-anio]");
 if (anio) anio.textContent = new Date().getFullYear();
+/* ---------- Carrusel de imágenes del convenio ---------- */
+var carrusel = document.querySelector("[data-carrusel]");
+if (carrusel) {
+var slides = carrusel.querySelectorAll("[data-slide]");
+var puntos = carrusel.querySelectorAll("[data-punto]");
+var INTERVALO = 5000;
+var indice = 0;
+var temporizador = null;
+var detenido = reduceMotion;
+
+var mostrar = function (n) {
+if (!slides.length) return;
+indice = (n + slides.length) % slides.length;
+slides.forEach(function (slide, i) {
+slide.classList.toggle("is-active", i === indice);
+});
+puntos.forEach(function (punto, i) {
+punto.classList.toggle("is-active", i === indice);
+punto.setAttribute("aria-selected", i === indice ? "true" : "false");
+});
+};
+
+var detener = function () {
+if (temporizador) {
+clearInterval(temporizador);
+temporizador = null;
+}
+detenido = true;
+};
+
+var iniciar = function () {
+if (detenido || temporizador || slides.length < 2) return;
+temporizador = window.setInterval(function () {
+mostrar(indice + 1);
+}, INTERVALO);
+};
+
+// El usuario elige una imagen: se muestra y el carrusel se detiene
+puntos.forEach(function (punto) {
+punto.addEventListener("click", function () {
+var destino = parseInt(punto.getAttribute("data-punto"), 10);
+detener();
+mostrar(isNaN(destino) ? 0 : destino);
+});
+});
+
+// Pausar el avance cuando la pestaña no está visible
+document.addEventListener("visibilitychange", function () {
+if (document.hidden) {
+if (temporizador) {
+clearInterval(temporizador);
+temporizador = null;
+}
+} else {
+iniciar();
+}
+});
+
+mostrar(0);
+iniciar();
+}
 /* =========================================================
 VENTANAS FLOTANTES DE FORMULARIOS
 ========================================================= */

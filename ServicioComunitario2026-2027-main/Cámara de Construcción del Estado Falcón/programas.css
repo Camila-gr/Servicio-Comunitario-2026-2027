@@ -527,6 +527,81 @@ hr {
 .footer-bottom a { color: var(--gris-400); }
 .footer-bottom a:hover { color: #9ec5f0; }
 
+/* ---------- Animaciones de entrada ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Escalonado: los bloques de una misma fila suben uno tras otro */
+.programa-escudo > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.grid--3 > .reveal:nth-child(2) { transition-delay: 0.1s; }
+.grid--3 > .reveal:nth-child(3) { transition-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* =========================================================
+   DOS FORMULARIOS LADO A LADO (escritorio)
+   ========================================================= */
+.programas-cta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.programas-cta > .programa-bloque:nth-child(2) { transition-delay: 0.1s; }
+
+.programa-bloque {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 3vw, 2.25rem);
+  background: #fff;
+  border: 1px solid var(--gris-200);
+  border-radius: var(--radio);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.programa-bloque:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-card);
+  border-color: var(--azul-borde);
+}
+
+.programa-bloque .section-header {
+  margin-bottom: 0;
+  max-width: none;
+}
+
+.programa-bloque .section-header .lead { margin-bottom: 0; }
+
+.programa-bloque__accion {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .programas-cta {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .programas-cta > .programa-bloque:nth-child(2) { transition-delay: 0s; }
+}
+
 /* ---------- Botón flotante de WhatsApp ---------- */
 .boton-whatsapp {
   position: fixed;
