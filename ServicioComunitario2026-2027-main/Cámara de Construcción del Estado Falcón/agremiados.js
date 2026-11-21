@@ -7,7 +7,7 @@
     // =====================================================================
     // FUNCIÓN AUXILIAR DE ENVÍO DIRECTO A SUPABASE (SEGURO Y LIMPIO)
     // =====================================================================
-    async function enviarDatosASupabase(datosObjeto, formularioHTML) {
+    async function enviarDatosASupabase(nombreTabla, datosObjeto, formularioHTML) {
         try {
             if (!window.supabaseClient) throw new Error("Supabase no está inicializado.");
 
@@ -24,7 +24,7 @@
             };
 
             const { error } = await window.supabaseClient
-                .from('agremiados')
+                .from(nombreTabla)
                 .insert([datosLimpios]);
 
             if (error) throw error;
@@ -72,7 +72,7 @@
             };
 
             guardarEnMemoriaLocal(tipo, datos);
-            await enviarDatosASupabase(datos, formEmpresa);
+            await enviarDatosASupabase('agremiado_form_general', datos, formEmpresa);
         });
     }
 
@@ -107,7 +107,7 @@
             };
 
             guardarEnMemoriaLocal(tipo, datos);
-            await enviarDatosASupabase(datos, formProfesional);
+            await enviarDatosASupabase('agremiado_form_tecnico', datos, formProfesional);
         });
     }
 
@@ -138,7 +138,7 @@
             };
 
             guardarEnMemoriaLocal(tipo, datos);
-            await enviarDatosASupabase(datos, formProveedor);
+            await enviarDatosASupabase('agremiado_form_servicio', datos, formProveedor);
         });
     }
 
