@@ -165,7 +165,7 @@
                     if (!window.supabaseClient) throw new Error("Supabase no está inicializado.");
 
                     const { error } = await window.supabaseClient
-                        .from('programas_diagnostico')
+                        .from('programas_diagnosticos')
                         .insert([datosDiagnostico]);
 
                     if (error) throw error;
