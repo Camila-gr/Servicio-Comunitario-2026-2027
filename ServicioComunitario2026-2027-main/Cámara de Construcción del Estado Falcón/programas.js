@@ -152,12 +152,12 @@
                     servicio_deporte: document.getElementById('serv-7')?.value || '',
                     perfil_alcalde: obtenerRadio('diag-perfil'),
                     cualidades_lider: obtenerCheckboxes('diag-cualidades'),
-                    estilo_gestión: obtenerRadio('diag-estilo'),
+                    estilo_gestion: obtenerRadio('diag-estilo'),
                     prioridades: obtenerCheckboxes('diag-prioridades'),
                     problema_grave: document.getElementById('diag-problema')?.value || '',
-                    economía_iniciativa: obtenerCheckboxes('diag-economia'),
+                    economia_iniciativa: obtenerCheckboxes('diag-economia'),
                     juventud_proyectos: obtenerCheckboxes('diag-juventud'),
-                    vía_participación: obtenerCheckboxes('diag-participacion'),
+                    via_participacion: obtenerCheckboxes('diag-participacion'),
                     propuesta_obra: document.getElementById('diag-propuesta')?.value || ''
                 };
 
@@ -203,7 +203,7 @@
                     parroquia: document.getElementById('post-parroquia')?.value || '',
                     fecha_solicitud: document.getElementById('post-fecha')?.value || '',
                     sector: document.getElementById('post-sector')?.value || '',
-                    dirección: document.getElementById('post-direccion')?.value || '',
+                    direccion: document.getElementById('post-direccion')?.value || '',
                     cantidad_familias: document.getElementById('post-familias')?.value || '',
                     enlace_nombre: document.getElementById('post-enlace-nombre')?.value || '',
                     enlace_cedula: document.getElementById('post-enlace-cedula')?.value || '',
@@ -213,10 +213,10 @@
                     suplente_cedula: document.getElementById('post-suplente-cedula')?.value || '',
                     suplente_telefono: document.getElementById('post-suplente-telefono')?.value || '',
                     ejes_apoyo: obtenerCheckboxes('post-ejes'),
-                    descripción_soledad: document.getElementById('post-descripcion')?.value || '',
+                    descripcion_soledad: document.getElementById('post-descripcion')?.value || '',
                     voluntarios: obtenerRadio('post-voluntarios'),
                     voluntarios_cantidad: document.getElementById('post-voluntarios-cantidad')?.value || '',
-                    espacio_físico: obtenerRadio('post-espacio'),
+                    espacio_fisico: obtenerRadio('post-espacio'),
                     espacio_cual: document.getElementById('post-espacio-cual')?.value || ''
                 };
 
