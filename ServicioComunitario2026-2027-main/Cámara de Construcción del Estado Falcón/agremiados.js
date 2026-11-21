@@ -5,47 +5,6 @@
     "use strict";
 
     // =====================================================================
-    // FUNCIÓN AUXILIAR DE ENVÍO DIRECTO A SUPABASE (SEGURO Y LIMPIO)
-    // =====================================================================
-    async function enviarDatosASupabase(datosObjeto, formularioHTML) {
-        try {
-            if (!window.supabaseClient) throw new Error("Supabase no está inicializado.");
-
-            // Limpiamos el objeto para enviar estrictamente las columnas de la tabla de Supabase
-            const datosLimpios = {
-                categoria: datosObjeto.categoria,
-                nombre: datosObjeto.nombre,
-                cedula: datosObjeto.cedula,
-                nacimiento: datosObjeto.nacimiento,
-                correo: datosObjeto.correo,
-                rif: datosObjeto.rif,
-                registro_o_titulo: datosObjeto.registro_o_titulo,
-                extra_info: datosObjeto.extra_info
-            };
-
-            const { error } = await window.supabaseClient
-                .from('agremiados')
-                .insert([datosLimpios]);
-
-            if (error) throw error;
-
-            // Éxito: mostrar mensaje amigable al usuario y ocultar el formulario
-            var caja = formularioHTML.closest(".modal");
-            var aviso = caja && caja.querySelector(".aviso-exito");
-            formularioHTML.style.display = "none";
-            if (aviso) aviso.classList.add("is-visible");
-            var cuerpo = caja && caja.querySelector(".modal__cuerpo");
-            if (cuerpo) cuerpo.scrollTop = 0;
-
-        } catch (err) {
-            // El detalle técnico se queda solo en la consola del desarrollador
-            console.error('Error técnico en Supabase:', err.message);
-            // Mensaje genérico y seguro para el usuario
-            alert('Hubo un error al registrar los datos. Por favor, inténtalo de nuevo más tarde.');
-        }
-    }
-
-    // =====================================================================
     // 2. FORMULARIO 1: EMPRESA CONSTRUCTORA (#modal-empresa)
     // =====================================================================
     const formEmpresa = document.querySelector('#modal-empresa form');
@@ -72,7 +31,38 @@
             };
 
             guardarEnMemoriaLocal(tipo, datos);
-            await enviarDatosASupabase(datos, formEmpresa);
+
+            try {
+                if (!window.supabaseClient) throw new Error("Supabase no está inicializado.");
+
+                const datosLimpios = {
+                    categoria: datos.categoria,
+                    nombre: datos.nombre,
+                    cedula: datos.cedula,
+                    nacimiento: datos.nacimiento,
+                    correo: datos.correo,
+                    rif: datos.rif,
+                    registro_o_titulo: datos.registro_o_titulo,
+                    extra_info: datos.extra_info
+                };
+
+                const { error } = await window.supabaseClient
+                    .from('agremiado_form_general')
+                    .insert([datosLimpios]);
+
+                if (error) throw error;
+
+                var caja = formEmpresa.closest(".modal");
+                var aviso = caja && caja.querySelector(".aviso-exito");
+                formEmpresa.style.display = "none";
+                if (aviso) aviso.classList.add("is-visible");
+                var cuerpo = caja && caja.querySelector(".modal__cuerpo");
+                if (cuerpo) cuerpo.scrollTop = 0;
+
+            } catch (err) {
+                console.error('Error técnico en Supabase:', err.message);
+                alert('Hubo un error al registrar los datos. Por favor, inténtalo de nuevo más tarde.');
+            }
         });
     }
 
@@ -107,7 +97,38 @@
             };
 
             guardarEnMemoriaLocal(tipo, datos);
-            await enviarDatosASupabase(datos, formProfesional);
+
+            try {
+                if (!window.supabaseClient) throw new Error("Supabase no está inicializado.");
+
+                const datosLimpios = {
+                    categoria: datos.categoria,
+                    nombre: datos.nombre,
+                    cedula: datos.cedula,
+                    nacimiento: datos.nacimiento,
+                    correo: datos.correo,
+                    rif: datos.rif,
+                    registro_o_titulo: datos.registro_o_titulo,
+                    extra_info: datos.extra_info
+                };
+
+                const { error } = await window.supabaseClient
+                    .from('agremiado_form_servicio')
+                    .insert([datosLimpios]);
+
+                if (error) throw error;
+
+                var caja = formProfesional.closest(".modal");
+                var aviso = caja && caja.querySelector(".aviso-exito");
+                formProfesional.style.display = "none";
+                if (aviso) aviso.classList.add("is-visible");
+                var cuerpo = caja && caja.querySelector(".modal__cuerpo");
+                if (cuerpo) cuerpo.scrollTop = 0;
+
+            } catch (err) {
+                console.error('Error técnico en Supabase:', err.message);
+                alert('Hubo un error al registrar los datos. Por favor, inténtalo de nuevo más tarde.');
+            }
         });
     }
 
@@ -138,7 +159,38 @@
             };
 
             guardarEnMemoriaLocal(tipo, datos);
-            await enviarDatosASupabase(datos, formProveedor);
+
+            try {
+                if (!window.supabaseClient) throw new Error("Supabase no está inicializado.");
+
+                const datosLimpios = {
+                    categoria: datos.categoria,
+                    nombre: datos.nombre,
+                    cedula: datos.cedula,
+                    nacimiento: datos.nacimiento,
+                    correo: datos.correo,
+                    rif: datos.rif,
+                    registro_o_titulo: datos.registro_o_titulo,
+                    extra_info: datos.extra_info
+                };
+
+                const { error } = await window.supabaseClient
+                    .from('agremiado_form_tecnico')
+                    .insert([datosLimpios]);
+
+                if (error) throw error;
+
+                var caja = formProveedor.closest(".modal");
+                var aviso = caja && caja.querySelector(".aviso-exito");
+                formProveedor.style.display = "none";
+                if (aviso) aviso.classList.add("is-visible");
+                var cuerpo = caja && caja.querySelector(".modal__cuerpo");
+                if (cuerpo) cuerpo.scrollTop = 0;
+
+            } catch (err) {
+                console.error('Error técnico en Supabase:', err.message);
+                alert('Hubo un error al registrar los datos. Por favor, inténtalo de nuevo más tarde.');
+            }
         });
     }
 
