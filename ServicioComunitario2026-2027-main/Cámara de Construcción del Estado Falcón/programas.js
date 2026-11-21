@@ -133,7 +133,7 @@
                     return seleccionado ? seleccionado.value : '';
                 };
 
-                // Mapeo exacto con las columnas de programas_diagnostico
+                // Mapeo exacto con las columnas de programas_diagnosticos
                 const datosDiagnostico = {
                     parroquia: obtenerRadio('diag-parroquia'),
                     sector: document.getElementById('diag-sector')?.value || '',
@@ -145,11 +145,11 @@
                     calidad_vida: obtenerRadio('diag-calidad'),
                     serv_agua: document.getElementById('serv-1')?.value || '',
                     serv_aseo: document.getElementById('serv-2')?.value || '',
-                    servicio_electricidad: document.getElementById('serv-3')?.value || '',
-                    servicio_vialidad: document.getElementById('serv-4')?.value || '',
-                    servicio_transporte: document.getElementById('serv-5')?.value || '',
-                    servicio_seguridad: document.getElementById('serv-6')?.value || '',
-                    servicio_deporte: document.getElementById('serv-7')?.value || '',
+                    serv_electricidad: document.getElementById('serv-3')?.value || '',
+                    serv_vialidad: document.getElementById('serv-4')?.value || '',
+                    serv_transporte: document.getElementById('serv-5')?.value || '',
+                    serv_seguridad: document.getElementById('serv-6')?.value || '',
+                    serv_deporte: document.getElementById('serv-7')?.value || '',
                     perfil_alcalde: obtenerRadio('diag-perfil'),
                     cualidades_lider: obtenerCheckboxes('diag-cualidades'),
                     estilo_gestion: obtenerRadio('diag-estilo'),
@@ -208,12 +208,12 @@
                     enlace_nombre: document.getElementById('post-enlace-nombre')?.value || '',
                     enlace_cedula: document.getElementById('post-enlace-cedula')?.value || '',
                     enlace_telefono: document.getElementById('post-enlace-telefono')?.value || '',
-                    enlace_carga: document.getElementById('post-enlace-cargo')?.value || '',
+                    enlace_cargo: document.getElementById('post-enlace-cargo')?.value || '',
                     suplente_nombre: document.getElementById('post-suplente-nombre')?.value || '',
                     suplente_cedula: document.getElementById('post-suplente-cedula')?.value || '',
                     suplente_telefono: document.getElementById('post-suplente-telefono')?.value || '',
                     ejes_apoyo: obtenerCheckboxes('post-ejes'),
-                    descripcion_soledad: document.getElementById('post-descripcion')?.value || '',
+                    descripcion_solicitud: document.getElementById('post-descripcion')?.value || '',
                     voluntarios: obtenerRadio('post-voluntarios'),
                     voluntarios_cantidad: document.getElementById('post-voluntarios-cantidad')?.value || '',
                     espacio_fisico: obtenerRadio('post-espacio'),
