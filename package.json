@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "config": "node generar-config.js",
+    "build": "node generar-config.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.10"
+  }
+}

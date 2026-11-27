@@ -1,0 +1,30 @@
+# ===== Variables de entorno / credenciales =====
+.env
+.env.*
+!.env.example
+
+# ===== Supabase =====
+# Configuración con credenciales usada por el sitio
+supabase-config.js
+supabase-config.local.js
+
+# Carpetas y archivos del CLI de Supabase
+supabase/
+.supabase/
+.branches/
+.temp/
+supabase/.branches/
+supabase/.temp/
+supabase/functions/**/.env
+*.supabase.*
+
+# ===== Dependencias =====
+node_modules/
+
+# ===== Sistema / editor =====
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
