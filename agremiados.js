@@ -417,7 +417,7 @@
         correo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         rifEmpresa: /^[JVEjve]-?[0-9]{8,9}-?[0-9]?$/,
         rifNegocio: /^[Jj]-?[0-9]{8,9}-?[0-9]?$/,
-        rifPersonal: /^[VEve]-?[0-9]{8,9}-?[0-9]?$/,
+        rifPersonal: /^[JVEjve]-?[0-9]{8,9}-?[0-9]?$/,
         registro: /^[0-9A-Za-zÁÉÍÓÚáéíóúÑÑüÜ][0-9A-Za-zÁÉÍÓÚáéíóúÑÑüÜ\-\/.\s]{3,39}$/,
         texto: /^[0-9A-Za-zÁÉÍÓÚáéíóúÑÑüÜ.,'()\/\-\s]+$/,
         anio: /^(19|20)[0-9]{2}$/
@@ -437,7 +437,7 @@
             { name: "pro-cedula", min: 6, max: 12, patron: PATRONES.cedula, mensajeError: "Cédula inválida. Formato: V-12345678." },
             { name: "pro-nacimiento", tipo: "fecha" },
             { name: "pro-correo", min: 5, max: 120, patron: PATRONES.correo, mensajeError: "Ingrese un correo electrónico válido." },
-            { name: "pro-rif", min: 5, max: 15, patron: PATRONES.rifPersonal, mensajeError: "RIF inválido. Formato: V-12345678-9." },
+            { name: "pro-rif", min: 5, max: 15, patron: PATRONES.rifPersonal, mensajeError: "RIF inválido. Formato: J-12345678-9." },
             { name: "pro-profesion", min: 3, max: 100, patron: PATRONES.texto, mensajeError: "Ingrese su profesión (mínimo 3 caracteres)." },
             { name: "pro-institucion", min: 3, max: 150, patron: PATRONES.texto, mensajeError: "Ingrese el nombre de la institución universitaria." },
             { name: "pro-anio-graduacion", min: 4, max: 4, patron: PATRONES.anio, mensajeError: "Año de graduación inválido (formato: YYYY)." }
