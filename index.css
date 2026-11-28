@@ -824,3 +824,7 @@ hr {
   .estadisticas__caja { grid-template-columns: 1fr; }
   .estadistica { border-right: 0; }
 }
+
+.grid--inicio { align-items: start; }
+.mb-md { margin-bottom: 1.25rem; }
+

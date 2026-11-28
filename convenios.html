@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://xzqtzqmrhbqfeyekrfyh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Convenios | Cámara de la Construcción del Edo. Falcón</title>
   <meta name="description" content="Conoce los convenios de la Cámara de Construcción del Edo. Falcón.">
   <meta name="robots" content="index, follow">
@@ -169,7 +171,7 @@
           <span class="eyebrow">Inscripción</span>
           <h2>Censo de Formación Técnica y Profesional</h2>
           <p class="lead">Registro y diagnóstico de necesidades de capacitación técnica y profesional en el marco del convenio con la Universidad del Zulia. Toda la información es en texto, sin adjuntar documentos.</p>
-          <div style="margin-top: 1.5rem;">
+          <div class="mt-lg">
             <button type="button" class="btn btn--primario" data-modal-abrir="modal-luz">
               Empezar
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -198,6 +200,10 @@
             <p>Tus datos quedaron registrados exitosamente.</p>
           </div>
           <form data-formulario novalidate>
+            <div class="campo-verificacion" aria-hidden="true">
+              <label for="hp-censo">No completar este campo</label>
+              <input id="hp-censo" name="website_url" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+            </div>
             <div class="form-grid">
               <p class="form-bloque campo--completo">Datos personales y de contacto</p>
               <div class="campo campo--completo">
@@ -206,31 +212,31 @@
               </div>
               <div class="campo">
                 <label for="cens-nombres">Nombres <span class="obligatorio">*</span></label>
-                <input id="cens-nombres" name="cens-nombres" type="text" placeholder="Ej. Ana María" autocomplete="given-name" required>
+                <input id="cens-nombres" name="cens-nombres" type="text" maxlength="60" placeholder="Ej. Ana María" autocomplete="given-name" required>
               </div>
               <div class="campo">
                 <label for="cens-apellidos">Apellidos <span class="obligatorio">*</span></label>
-                <input id="cens-apellidos" name="cens-apellidos" type="text" placeholder="Ej. Martínez Pérez" autocomplete="family-name" required>
+                <input id="cens-apellidos" name="cens-apellidos" type="text" maxlength="60" placeholder="Ej. Martínez Pérez" autocomplete="family-name" required>
               </div>
               <div class="campo">
                 <label for="cens-cedula">Cédula de identidad <span class="obligatorio">*</span></label>
-                <input id="cens-cedula" name="cens-cedula" type="text" placeholder="V-12345678" required>
+                <input id="cens-cedula" name="cens-cedula" type="text" maxlength="12" placeholder="V-12345678" autocomplete="off" required>
               </div>
               <div class="campo">
                 <label for="cens-nacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
-                <input id="cens-nacimiento" name="cens-nacimiento" type="date" required>
+                <input id="cens-nacimiento" name="cens-nacimiento" type="date" min="1910-01-01" required>
               </div>
               <div class="campo campo--completo">
                 <label for="cens-direccion">Dirección de habitación <span class="obligatorio">*</span></label>
-                <input id="cens-direccion" name="cens-direccion" type="text" placeholder="Sector / Urbanización, calle / avenida, municipio, estado" autocomplete="street-address" required>
+                <input id="cens-direccion" name="cens-direccion" type="text" maxlength="200" placeholder="Sector / Urbanización, calle / avenida, municipio, estado" autocomplete="street-address" required>
               </div>
               <div class="campo">
                 <label for="cens-telefono">Teléfono (móvil / WhatsApp) <span class="obligatorio">*</span></label>
-                <input id="cens-telefono" name="cens-telefono" type="tel" placeholder="0412-1234567" autocomplete="tel" required>
+                <input id="cens-telefono" name="cens-telefono" type="tel" maxlength="18" placeholder="0412-1234567" autocomplete="tel" required>
               </div>
               <div class="campo">
                 <label for="cens-correo">Correo electrónico <span class="obligatorio">*</span></label>
-                <input id="cens-correo" name="cens-correo" type="email" placeholder="nombre@correo.com" autocomplete="email" required>
+                <input id="cens-correo" name="cens-correo" type="email" maxlength="120" placeholder="nombre@correo.com" autocomplete="email" required>
               </div>
 
               <p class="form-bloque campo--completo">Formación académica</p>
@@ -244,7 +250,7 @@
               </div>
               <div class="campo">
                 <label for="cens-serial">Serial del título</label>
-                <input id="cens-serial" name="cens-serial" type="text" placeholder="Ej. 123456" disabled>
+                <input id="cens-serial" name="cens-serial" type="text" maxlength="40" placeholder="Ej. 123456" autocomplete="off" disabled>
               </div>
               <div class="campo">
                 <label for="cens-anio-egreso">Año de egreso</label>
@@ -260,7 +266,7 @@
               </div>
               <div class="campo">
                 <label for="cens-carrera">Carrera que cursa</label>
-                <input id="cens-carrera" name="cens-carrera" type="text" placeholder="Ej. Ingeniería Civil" disabled>
+                <input id="cens-carrera" name="cens-carrera" type="text" maxlength="80" placeholder="Ej. Ingeniería Civil" disabled>
               </div>
               <div class="campo">
                 <label for="cens-semestre">Semestre</label>
@@ -268,7 +274,7 @@
               </div>
               <div class="campo">
                 <label for="cens-institucion">Institución educativa</label>
-                <input id="cens-institucion" name="cens-institucion" type="text" placeholder="Ej. Universidad del Zulia" disabled>
+                <input id="cens-institucion" name="cens-institucion" type="text" maxlength="80" placeholder="Ej. Universidad del Zulia" disabled>
               </div>
 
               <p class="form-bloque campo--completo">Selección de área de formación</p>
@@ -298,9 +304,9 @@
               <fieldset class="grupo-opciones campo--completo">
                 <legend>Otra especialidad</legend>
                 <label class="opcion"><input id="cens-otra-check" name="cens-otra" type="checkbox" value="Otra especialidad"> Otra especialidad</label>
-                <div class="campo" style="margin-top:.75rem">
+                <div class="campo mt-sm">
                   <label for="cens-otra-detalle">Otro (especifique)</label>
-                  <input id="cens-otra-detalle" name="cens-otra-detalle" type="text" placeholder="Escriba la especialidad de su interés" disabled>
+                  <input id="cens-otra-detalle" name="cens-otra-detalle" type="text" maxlength="120" placeholder="Escriba la especialidad de su interés" disabled>
                 </div>
               </fieldset>
 
@@ -387,15 +393,18 @@
     </div>
   </footer>
 
-  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.7 1.8.8 1.9c.1.1.1.3 0 .5s-.2.4-.3.6l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1s.7-.9.9-1.2c.2-.3.4-.2.7-.1l1.8.9c.3.2.5.2.6.4.1.1.1.7-.1 1.2z"/></svg>
   </a>
 
-  <!-- Librería oficial de Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Librería oficial de Supabase (versión fijada + Subresource Integrity) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js" integrity="sha384-A97u3Qnt9GZHURO9YJZRe7VQgGUeFzcv6I1oIGnUTxQrCxnpQMwR0/G8F2zt9abZ" crossorigin="anonymous" defer></script>
 
   <!-- Conexión centralizada -->
   <script src="supabase-config.js" defer></script>
+
+  <!-- Utilidades compartidas de seguridad y validación -->
+  <script src="security-utils.js" defer></script>
 
   <script src="convenios.js" defer></script>
 </body>

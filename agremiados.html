@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://xzqtzqmrhbqfeyekrfyh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Agremiados | Cámara de la Construcción del Edo. Falcón</title>
   <meta name="description" content="Beneficios de asociarte a la Cámara de Construcción Falcón, requisitos de afiliación y formulario de inscripción para empresas, profesionales y proveedores del sector construcción.">
   <meta name="robots" content="index, follow">
@@ -104,9 +106,9 @@
         <div class="grid grid--3">
           <article class="tarjeta tarjeta--acento reveal">
             <span class="etiqueta">Categoría A</span>
-            <h3 style="margin-top:.75rem">Empresa constructora</h3>
+            <h3 class="mt-sm">Empresa constructora</h3>
             <p>Constructoras, contratistas y empresas de obra con registro mercantil vigente.</p>
-            <ul class="lista-check" style="margin-top:1rem;font-size:.93rem">
+            <ul class="lista-check lista-check--compacta">
               <li>Representación gremial</li>
               <li>Visibilidad</li>
               <li>Participación en asambleas</li>
@@ -115,9 +117,9 @@
 
           <article class="tarjeta tarjeta--acento reveal">
             <span class="etiqueta">Categoría B</span>
-            <h3 style="margin-top:.75rem">Profesional independiente</h3>
+            <h3 class="mt-sm">Profesional independiente</h3>
             <p>Ingenieros, arquitectos y técnicos colegiados que ejercen por cuenta propia.</p>
-            <ul class="lista-check" style="margin-top:1rem;font-size:.93rem">
+            <ul class="lista-check lista-check--compacta">
               <li>Capacitaciones con tarifa preferencial</li>
               <li>Constancias de idoneidad personal</li>
               <li>Perfil en el directorio gremial</li>
@@ -126,9 +128,9 @@
 
           <article class="tarjeta tarjeta--acento reveal">
             <span class="etiqueta">Categoría C</span>
-            <h3 style="margin-top:.75rem">Proveedor</h3>
+            <h3 class="mt-sm">Proveedor</h3>
             <p>Distribuidoras de materiales, equipos, herramientas y servicios complementarios.</p>
-            <ul class="lista-check" style="margin-top:1rem;font-size:.93rem">
+            <ul class="lista-check lista-check--compacta">
               <li>Exposición en ferias y ruedas de negocio</li>
               <li>Acceso a información de mercado</li>
               <li>Red de contactos</li>
@@ -141,7 +143,7 @@
     <!-- ===== Requisitos ===== -->
     <section class="section">
       <div class="container">
-        <div class="grid grid--2" style="align-items:start">
+        <div class="grid grid--2 grid--inicio">
           <div class="reveal">
             <span class="eyebrow">Requisitos</span>
             <h2>¿Cómo es el proceso de afiliación?</h2>
@@ -155,7 +157,7 @@
           </div>
 
           <div class="reveal">
-            <h3 style="margin-bottom:1.25rem">Requisitos según categoría</h3>
+            <h3 class="mb-md">Requisitos según categoría</h3>
             <ul class="servicio-lista">
               <li>
                 <div class="tarjeta__icono">
@@ -194,7 +196,7 @@
                 </div>
               </li>
             </ul>
-            <div class="destacado" style="margin-top:1.5rem">
+            <div class="destacado mt-lg">
               <p><strong>Importante:</strong> la información suministrada es confidencial y se usa únicamente con fines de gestión gremial, conforme a la política de privacidad del sitio.</p>
             </div>
           </div>
@@ -220,32 +222,36 @@
           <strong>Solicitud registrada</strong>
           <p>Tus datos quedaron registrados exitosamente.</p>
         </div>
-        <form data-formulario>
+        <form data-formulario novalidate>
+          <div class="campo-verificacion" aria-hidden="true">
+            <label for="hp-empresa">No completar este campo</label>
+            <input id="hp-empresa" name="website_url" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
           <div class="form-grid">
               <p class="form-bloque">Datos personales</p>
               <div class="campo">
                 <label for="emp-nombre">Nombre y apellido <span class="obligatorio">*</span></label>
-                <input id="emp-nombre" name="emp-nombre" type="text" placeholder="Ej. Luis Gómez" autocomplete="name" required>
+                <input id="emp-nombre" name="emp-nombre" type="text" maxlength="80" placeholder="Ej. Luis Gómez" autocomplete="name" required>
               </div>
               <div class="campo">
                 <label for="emp-cedula">Cédula de identidad <span class="obligatorio">*</span></label>
-                <input id="emp-cedula" name="emp-cedula" type="text" placeholder="V-12345678" required>
+                <input id="emp-cedula" name="emp-cedula" type="text" maxlength="12" placeholder="V-12345678" autocomplete="off" required>
               </div>
               <div class="campo">
                 <label for="emp-nacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
-                <input id="emp-nacimiento" name="emp-nacimiento" type="date" required>
+                <input id="emp-nacimiento" name="emp-nacimiento" type="date" min="1910-01-01" required>
               </div>
               <div class="campo campo--completo">
                 <label for="emp-correo">Correo electrónico <span class="obligatorio">*</span></label>
-                <input id="emp-correo" name="emp-correo" type="email" placeholder="nombre@correo.com" autocomplete="email" required>
+                <input id="emp-correo" name="emp-correo" type="email" maxlength="120" placeholder="nombre@correo.com" autocomplete="email" required>
               </div>
               <div class="campo campo--completo">
                 <label for="emp-rif">RIF empresarial<span class="obligatorio">*</span></label>
-                <input id="emp-rif" name="emp-rif" type="text" placeholder="J-12345678-9" required>
+                <input id="emp-rif" name="emp-rif" type="text" maxlength="15" placeholder="J-12345678-9" autocomplete="off" required>
               </div>
               <div class="campo campo--completo">
                 <label for="emp-registro">Registro mercantil<span class="obligatorio">*</span></label>
-                <input id="emp-registro" name="emp-registro" type="text" placeholder="123-45678" required>
+                <input id="emp-registro" name="emp-registro" type="text" maxlength="40" placeholder="123-45678" autocomplete="off" required>
               </div>
           </div>
           <div class="formulario__pie">
@@ -271,40 +277,44 @@
           <strong>Solicitud registrada</strong>
           <p>Tus datos quedaron registrados exitosamente.</p>
         </div>
-        <form data-formulario>
+        <form data-formulario novalidate>
+          <div class="campo-verificacion" aria-hidden="true">
+            <label for="hp-profesional">No completar este campo</label>
+            <input id="hp-profesional" name="website_url" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
           <div class="form-grid">
               <p class="form-bloque">Datos personales</p>
               <div class="campo">
                 <label for="pro-nombre">Nombre y apellido <span class="obligatorio">*</span></label>
-                <input id="pro-nombre" name="pro-nombre" type="text" placeholder="Ej. Luis Gómez" autocomplete="name" required>
+                <input id="pro-nombre" name="pro-nombre" type="text" maxlength="80" placeholder="Ej. Luis Gómez" autocomplete="name" required>
               </div>
               <div class="campo">
                 <label for="pro-cedula">Cédula de identidad <span class="obligatorio">*</span></label>
-                <input id="pro-cedula" name="pro-cedula" type="text" placeholder="V-12345678" required>
+                <input id="pro-cedula" name="pro-cedula" type="text" maxlength="12" placeholder="V-12345678" autocomplete="off" required>
               </div>
               <div class="campo">
                 <label for="pro-nacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
-                <input id="pro-nacimiento" name="pro-nacimiento" type="date" required>
+                <input id="pro-nacimiento" name="pro-nacimiento" type="date" min="1910-01-01" required>
               </div>
               <div class="campo campo--completo">
                 <label for="pro-correo">Correo electrónico <span class="obligatorio">*</span></label>
-                <input id="pro-correo" name="pro-correo" type="email" placeholder="nombre@correo.com" autocomplete="email" required>
+                <input id="pro-correo" name="pro-correo" type="email" maxlength="120" placeholder="nombre@correo.com" autocomplete="email" required>
               </div>
               <div class="campo campo--completo">
                 <label for="pro-rif">RIF personal (en texto) <span class="obligatorio">*</span></label>
-                <input id="pro-rif" name="pro-rif" type="text" placeholder="J-12345678-9" required>
+                <input id="pro-rif" name="pro-rif" type="text" maxlength="15" placeholder="V-12345678-9" autocomplete="off" required>
               </div>
               <div class="campo campo--completo">
                 <label for="pro-profesion">Profesión<span class="obligatorio">*</span></label>
-                <input id="pro-profesion" name="pro-profesion" type="text" placeholder="Ingeníero Mecánico" required>
+                <input id="pro-profesion" name="pro-profesion" type="text" maxlength="100" placeholder="Ingeniero Mecánico" required>
               </div>
               <div class="campo campo--completo">
                 <label for="pro-institucion">Institución Universitaria<span class="obligatorio">*</span></label>
-                <input id="pro-institucion" name="pro-institucion" type="text" placeholder="Universidad del Zulia" required>
+                <input id="pro-institucion" name="pro-institucion" type="text" maxlength="150" placeholder="Universidad del Zulia" required>
               </div>
               <div class="campo campo--completo">
                 <label for="pro-anio-graduacion">Año de graduación<span class="obligatorio">*</span></label>
-                <input id="pro-anio-graduacion" name="pro-anio-graduacion" type="text" placeholder="2018" required>
+                <input id="pro-anio-graduacion" name="pro-anio-graduacion" type="text" inputmode="numeric" maxlength="4" placeholder="2018" required>
               </div>
           </div>
           <div class="formulario__pie">
@@ -330,32 +340,36 @@
           <strong>Solicitud registrada</strong>
           <p>Tus datos quedaron registrados exitosamente</p>
         </div>
-        <form data-formulario>
+        <form data-formulario novalidate>
+          <div class="campo-verificacion" aria-hidden="true">
+            <label for="hp-proveedor">No completar este campo</label>
+            <input id="hp-proveedor" name="website_url" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
           <div class="form-grid">
               <p class="form-bloque">Datos personales</p>
               <div class="campo">
                 <label for="prov-nombre">Nombre y apellido <span class="obligatorio">*</span></label>
-                <input id="prov-nombre" name="prov-nombre" type="text" placeholder="Ej. Luis Gómez" autocomplete="name" required>
+                <input id="prov-nombre" name="prov-nombre" type="text" maxlength="80" placeholder="Ej. Luis Gómez" autocomplete="name" required>
               </div>
               <div class="campo">
                 <label for="prov-cedula">Cédula de identidad <span class="obligatorio">*</span></label>
-                <input id="prov-cedula" name="prov-cedula" type="text" placeholder="V-12345678" required>
+                <input id="prov-cedula" name="prov-cedula" type="text" maxlength="12" placeholder="V-12345678" autocomplete="off" required>
               </div>
               <div class="campo">
                 <label for="prov-nacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
-                <input id="prov-nacimiento" name="prov-nacimiento" type="date" required>
+                <input id="prov-nacimiento" name="prov-nacimiento" type="date" min="1910-01-01" required>
               </div>
               <div class="campo campo--completo">
                 <label for="prov-correo">Correo electrónico <span class="obligatorio">*</span></label>
-                <input id="prov-correo" name="prov-correo" type="email" placeholder="nombre@correo.com" autocomplete="email" required>
+                <input id="prov-correo" name="prov-correo" type="email" maxlength="120" placeholder="nombre@correo.com" autocomplete="email" required>
               </div>
               <div class="campo campo--completo">
                 <label for="prov-rif">RIF del negocio<span class="obligatorio">*</span></label>
-                <input id="prov-rif" name="prov-rif" type="text" placeholder="J-12345678-9" required>
+                <input id="prov-rif" name="prov-rif" type="text" maxlength="15" placeholder="J-12345678-9" autocomplete="off" required>
               </div>
               <div class="campo campo--completo">
                 <label for="prov-registro">Registro mercantil<span class="obligatorio">*</span></label>
-                <input id="prov-registro" name="prov-registro" type="text" placeholder="123-45678" required>
+                <input id="prov-registro" name="prov-registro" type="text" maxlength="40" placeholder="123-45678" autocomplete="off" required>
               </div>
           </div>
           <div class="formulario__pie">
@@ -415,17 +429,20 @@
     </div>
   </footer>
 
-  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.7 1.8.8 1.9c.1.1.1.3 0 .5s-.2.4-.3.6l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1s.7-.9.9-1.2c.2-.3.4-.2.7-.1l1.8.9c.3.2.5.2.6.4.1.1.1.7-.1 1.2z"/></svg>
   </a>
 
-  <!-- Librería oficial de Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
+  <!-- Librería oficial de Supabase (versión fijada + Subresource Integrity) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js" integrity="sha384-A97u3Qnt9GZHURO9YJZRe7VQgGUeFzcv6I1oIGnUTxQrCxnpQMwR0/G8F2zt9abZ" crossorigin="anonymous" defer></script>
+
   <!-- Conexión centralizada -->
   <script src="supabase-config.js" defer></script>
 
-  <!-- Tu archivo JavaScript de agremiados -->
+  <!-- Utilidades compartidas de seguridad y validación -->
+  <script src="security-utils.js" defer></script>
+
+  <!-- Archivo JavaScript de agremiados -->
   <script src="agremiados.js" defer></script>
 
 </body>

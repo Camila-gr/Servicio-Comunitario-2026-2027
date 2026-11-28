@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://xzqtzqmrhbqfeyekrfyh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Programas | Cámara de la Construcción del Edo. Falcón</title>
   <meta name="description" content="Asesoría técnica y legal, rol participativo, sectores de Paraguaná">
   <meta name="robots" content="index, follow">
@@ -121,7 +123,7 @@
           <span class="eyebrow">¿En qué consiste?</span>
           <h2>Cuestionario de diagnostico participativo y perfil de liderazgo Municipal</h2>
           <p class="lead">Es una consulta ciudadana anónima con el fin de realizar un diagnóstico general de las necesidades reales de la Península de Paraguaná.</p>
-          <div style="margin-top: 1.5rem;">
+          <div class="mt-lg">
             <button type="button" class="btn btn--primario" data-modal-abrir="modal-diagnostico">
               Empezar
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -137,7 +139,7 @@
           <span class="eyebrow">¿En qué consiste?</span>
           <h2>Formulario de registro y postulación sectorial</h2>
           <p class="lead">A través de este formulario podrás postular oficialmente a tu comunidad para solicitar el apoyo constitucional y técnico de la Cámara de la Construcción.</p>
-          <div style="margin-top: 1.5rem;">
+          <div class="mt-lg">
             <button type="button" class="btn btn--primario" data-modal-abrir="modal-postulacion">
               Empezar
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -163,7 +165,11 @@
           <strong>Solicitud registrada</strong>
           <p>Tus respuestas quedaron registradas exitosamente</p>
         </div>
-        <form data-formulario>
+        <form data-formulario novalidate>
+          <div class="campo-verificacion" aria-hidden="true">
+            <label for="hp-diagnostico">No completar este campo</label>
+            <input id="hp-diagnostico" name="website_url" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
           <div class="form-grid">
               <p class="form-bloque">Bloque I · Perfil territorial y socioeconómico</p>
               <fieldset class="campo campo--completo">
@@ -174,10 +180,11 @@
                   <label class="opcion"><input type="radio" name="diag-parroquia" value="Punta Cardón"><span>Punta Cardón</span></label>
                   <label class="opcion"><input type="radio" name="diag-parroquia" value="Santa Ana"><span>Santa Ana</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-parroquia" role="alert"></p>
               </fieldset>
               <div class="campo campo--completo">
                 <label for="diag-sector">Sector, comunidad o urbanización específica <span class="obligatorio">*</span></label>
-                <input id="diag-sector" name="diag-sector" type="text" placeholder="Ej. Casco Central, Barrio Carirubana, Bella Vista" required>
+                <input id="diag-sector" name="diag-sector" type="text" maxlength="120" placeholder="Ej. Casco Central, Barrio Carirubana, Bella Vista" required>
               </div>
               <fieldset class="campo campo--completo">
                 <legend>Edad del encuestado(a) <span class="obligatorio">*</span></legend>
@@ -187,6 +194,7 @@
                   <label class="opcion"><input type="radio" name="diag-edad" value="50 – 64 años"><span>50 – 64 años</span></label>
                   <label class="opcion"><input type="radio" name="diag-edad" value="65 años o más"><span>65 años o más</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-edad" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>Ocupación principal <span class="obligatorio">*</span></legend>
@@ -199,6 +207,7 @@
                   <label class="opcion"><input type="radio" name="diag-ocupacion" value="Jubilado(a) / Pensionado(a)"><span>Jubilado(a) / Pensionado(a)</span></label>
                   <label class="opcion"><input type="radio" name="diag-ocupacion" value="Desempleado(a)"><span>Desempleado(a)</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-ocupacion" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>Fuentes e índole de los ingresos en el hogar (puede marcar varias)</legend>
@@ -211,6 +220,7 @@
                   <label class="opcion"><input type="checkbox" name="diag-ingresos" value="Rentas o alquileres"><span>Rentas o alquileres</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-ingresos" value="Otro"><span>Otro</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-ingresos" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>¿Cuántas personas aportan ingresos económicos regularmente a su hogar? <span class="obligatorio">*</span></legend>
@@ -220,6 +230,7 @@
                   <label class="opcion"><input type="radio" name="diag-aportantes" value="3 personas"><span>3 personas</span></label>
                   <label class="opcion"><input type="radio" name="diag-aportantes" value="4 personas o más"><span>4 personas o más</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-aportantes" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>¿Cuántas personas viven en su hogar y se benefician de esos ingresos? <span class="obligatorio">*</span></legend>
@@ -229,6 +240,7 @@
                   <label class="opcion"><input type="radio" name="diag-habitantes" value="5 a 6 personas"><span>5 a 6 personas</span></label>
                   <label class="opcion"><input type="radio" name="diag-habitantes" value="7 personas o más"><span>7 personas o más</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-habitantes" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>En una escala del 1 al 5, ¿cómo evalúa la calidad de vida general en el municipio Carirubana? <span class="obligatorio">*</span></legend>
@@ -239,6 +251,7 @@
                   <label class="opcion"><input type="radio" name="diag-calidad" value="4 (Buena)"><span>4 (Buena)</span></label>
                   <label class="opcion"><input type="radio" name="diag-calidad" value="5 (Excelente)"><span>5 (Excelente)</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-calidad" role="alert"></p>
               </fieldset>
               <p class="form-bloque">Bloque II · Evaluación de servicios públicos</p>
               <div class="campo">
@@ -328,9 +341,10 @@
                   <label class="opcion"><input type="radio" name="diag-perfil" value="Con experiencia legislativa, de negociación e intermediación de alto nivel"><span>Con experiencia legislativa, de negociación e intermediación de alto nivel</span></label>
                   <label class="opcion"><input type="radio" name="diag-perfil" value="Enfocado en la formación, la institucionalidad, la cultura y los valores"><span>Enfocado en la formación, la institucionalidad, la cultura y los valores</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-perfil" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
-                <legend>¿Qué cualidad o atributo personal considera MÁS IMPORTANTE en el líder municipal? (máximo dos)</legend>
+                <legend>¿Qué cualidad o atributo personal considera MÁS IMPORTANTE en el líder municipal? (máximo dos) <span class="obligatorio">*</span></legend>
                 <div class="opciones">
                   <label class="opcion"><input type="checkbox" name="diag-cualidades" value="Honestidad y transparencia en el uso del presupuesto municipal"><span>Honestidad y transparencia en el uso del presupuesto municipal</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-cualidades" value="Capacidad de resolver problemas con rapidez y eficacia"><span>Capacidad de resolver problemas con rapidez y eficacia</span></label>
@@ -338,6 +352,7 @@
                   <label class="opcion"><input type="checkbox" name="diag-cualidades" value="Visión de futuro y modernización para Punto Fijo y sus parroquias"><span>Visión de futuro y modernización para Punto Fijo y sus parroquias</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-cualidades" value="Capacidad de diálogo y articulación con todos los sectores sociales"><span>Capacidad de diálogo y articulación con todos los sectores sociales</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-cualidades" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>En la dinámica de trabajo de la Alcaldía, ¿qué estilo de gestión prefiere? (una sola opción) <span class="obligatorio">*</span></legend>
@@ -346,10 +361,11 @@
                   <label class="opcion"><input type="radio" name="diag-estilo" value="Un perfil territorial permanente en los sectores, resolviendo mano a mano con la gente"><span>Un perfil territorial permanente en los sectores, resolviendo mano a mano con la gente</span></label>
                   <label class="opcion"><input type="radio" name="diag-estilo" value="Un perfil mixto que equilibre la planificación gerencial con la presencia comunitaria"><span>Un perfil mixto que equilibre la planificación gerencial con la presencia comunitaria</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-estilo" role="alert"></p>
               </fieldset>
               <p class="form-bloque">Bloque IV · Priorización de problemas</p>
               <fieldset class="campo campo--completo">
-                <legend>Seleccione las tres (3) áreas prioritarias que la gestión municipal debe atender con mayor urgencia</legend>
+                <legend>Seleccione hasta tres (3) áreas prioritarias que la gestión municipal debe atender con mayor urgencia <span class="obligatorio">*</span></legend>
                 <div class="opciones">
                   <label class="opcion"><input type="checkbox" name="diag-prioridades" value="Solución al problema del agua y mejora de los ciclos de suministro"><span>Solución al problema del agua y mejora de los ciclos de suministro</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-prioridades" value="Reparación de calles, bacheo y asfaltado"><span>Reparación de calles, bacheo y asfaltado</span></label>
@@ -359,10 +375,11 @@
                   <label class="opcion"><input type="checkbox" name="diag-prioridades" value="Salud municipal y fortalecimiento de ambulatorios"><span>Salud municipal y fortalecimiento de ambulatorios</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-prioridades" value="Limpieza, saneamiento y gestión ambiental / basura"><span>Limpieza, saneamiento y gestión ambiental / basura</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-prioridades" role="alert"></p>
               </fieldset>
               <div class="campo campo--completo">
                 <label for="diag-problema">¿Cuál considera que es el problema específico MÁS GRAVE de su sector o parroquia? <span class="obligatorio">*</span></label>
-                <textarea id="diag-problema" name="diag-problema" placeholder="Describe el problema principal" required></textarea>
+                <textarea id="diag-problema" name="diag-problema" maxlength="1000" placeholder="Describe el problema principal" required></textarea>
               </div>
               <p class="form-bloque">Bloque V · Desarrollo económico y juventud</p>
               <fieldset class="campo campo--completo">
@@ -375,6 +392,7 @@
                   <label class="opcion"><input type="checkbox" name="diag-economia" value="Impulso al turismo, gastronomía y comercio local"><span>Impulso al turismo, gastronomía y comercio local</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-economia" value="Mercados comunitarios y ferias de abastecimiento a precios accesibles"><span>Mercados comunitarios y ferias de abastecimiento a precios accesibles</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-economia" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>¿Qué tipo de proyectos hacen falta para impulsar a la juventud en su parroquia?</legend>
@@ -385,6 +403,7 @@
                   <label class="opcion"><input type="checkbox" name="diag-juventud" value="Torneos deportivos interparroquiales continuos"><span>Torneos deportivos interparroquiales continuos</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-juventud" value="Espacios comunitarios con conectividad a internet / bibliotecas digitales"><span>Espacios comunitarios con conectividad a internet / bibliotecas digitales</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-juventud" role="alert"></p>
               </fieldset>
               <fieldset class="campo campo--completo">
                 <legend>¿A través de qué vía preferiría participar en las decisiones de la gestión municipal?</legend>
@@ -394,11 +413,12 @@
                   <label class="opcion"><input type="checkbox" name="diag-participacion" value="Atención directa mediante consejos comunales / voceros de zona"><span>Atención directa mediante consejos comunales / voceros de zona</span></label>
                   <label class="opcion"><input type="checkbox" name="diag-participacion" value="Aplicación móvil o WhatsApp institucional para reportes directos"><span>Aplicación móvil o WhatsApp institucional para reportes directos</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="diag-participacion" role="alert"></p>
               </fieldset>
               <p class="form-bloque">Bloque VI · Participación y propuestas</p>
               <div class="campo campo--completo">
                 <label for="diag-propuesta">Si pudiera proponer una sola obra o proyecto concreto para su parroquia en el nuevo Plan de Gobierno, ¿cuál sería? <span class="obligatorio">*</span></label>
-                <textarea id="diag-propuesta" name="diag-propuesta" placeholder="Describe la obra o proyecto" required></textarea>
+                <textarea id="diag-propuesta" name="diag-propuesta" maxlength="1000" placeholder="Describe la obra o proyecto" required></textarea>
               </div>
           </div>
           <div class="formulario__pie">
@@ -423,7 +443,11 @@
           <strong>Solicitud registrada</strong>
           <p>Su solicitud fue registrada exitosamente.</p>
         </div>
-        <form data-formulario>
+        <form data-formulario novalidate>
+          <div class="campo-verificacion" aria-hidden="true">
+            <label for="hp-postulacion">No completar este campo</label>
+            <input id="hp-postulacion" name="website_url" type="text" tabindex="-1" autocomplete="off" data-honeypot>
+          </div>
           <div class="form-grid">
               <p class="form-bloque">1 · Datos de identificación del sector</p>
               <div class="campo">
@@ -438,62 +462,63 @@
               </div>
               <div class="campo">
                 <label for="post-fecha">Fecha de solicitud <span class="obligatorio">*</span></label>
-                <input id="post-fecha" name="post-fecha" type="date" required>
+                <input id="post-fecha" name="post-fecha" type="date" min="2024-01-01" required>
               </div>
               <div class="campo campo--completo">
                 <label for="post-sector">Nombre del sector / urbanización / barrio <span class="obligatorio">*</span></label>
-                <input id="post-sector" name="post-sector" type="text" required>
+                <input id="post-sector" name="post-sector" type="text" maxlength="120" required>
               </div>
               <div class="campo campo--completo">
                 <label for="post-direccion">Dirección exacta o punto de referencia principal <span class="obligatorio">*</span></label>
-                <input id="post-direccion" name="post-direccion" type="text" required>
+                <input id="post-direccion" name="post-direccion" type="text" maxlength="250" required>
               </div>
               <div class="campo campo--completo">
                 <label for="post-familias">Cantidad aproximada de familias beneficiadas <span class="obligatorio">*</span></label>
-                <input id="post-familias" name="post-familias" type="text" placeholder="Ej. 120" required>
+                <input id="post-familias" name="post-familias" type="text" inputmode="numeric" maxlength="6" placeholder="Ej. 120" required>
               </div>
               <p class="form-bloque">2 · Voceros o enlaces comunitarios</p>
               <div class="campo">
                 <label for="post-enlace-nombre">Enlace principal (nombre y apellido) <span class="obligatorio">*</span></label>
-                <input id="post-enlace-nombre" name="post-enlace-nombre" type="text" required>
+                <input id="post-enlace-nombre" name="post-enlace-nombre" type="text" maxlength="80" required>
               </div>
               <div class="campo">
                 <label for="post-enlace-cedula">Cédula del enlace principal <span class="obligatorio">*</span></label>
-                <input id="post-enlace-cedula" name="post-enlace-cedula" type="text" placeholder="V-12345678" required>
+                <input id="post-enlace-cedula" name="post-enlace-cedula" type="text" maxlength="12" placeholder="V-12345678" autocomplete="off" required>
               </div>
               <div class="campo">
                 <label for="post-enlace-telefono">Teléfono / WhatsApp del enlace principal <span class="obligatorio">*</span></label>
-                <input id="post-enlace-telefono" name="post-enlace-telefono" type="text" placeholder="0412-0000000" required>
+                <input id="post-enlace-telefono" name="post-enlace-telefono" type="tel" maxlength="18" placeholder="0412-0000000" required>
               </div>
               <div class="campo campo--completo">
                 <label for="post-enlace-cargo">Cargo o rol en la comunidad <span class="obligatorio">*</span></label>
-                <input id="post-enlace-cargo" name="post-enlace-cargo" type="text" placeholder="Ej. Vocero vecinal, comité de deporte, líder de calle" required>
+                <input id="post-enlace-cargo" name="post-enlace-cargo" type="text" maxlength="100" placeholder="Ej. Vocero vecinal, comité de deporte, líder de calle" required>
               </div>
               <div class="campo">
                 <label for="post-suplente-nombre">Enlace suplente (nombre y apellido) <span class="obligatorio">*</span></label>
-                <input id="post-suplente-nombre" name="post-suplente-nombre" type="text" required>
+                <input id="post-suplente-nombre" name="post-suplente-nombre" type="text" maxlength="80" required>
               </div>
               <div class="campo">
                 <label for="post-suplente-cedula">Cédula del enlace suplente <span class="obligatorio">*</span></label>
-                <input id="post-suplente-cedula" name="post-suplente-cedula" type="text" placeholder="V-12345678" required>
+                <input id="post-suplente-cedula" name="post-suplente-cedula" type="text" maxlength="12" placeholder="V-12345678" autocomplete="off" required>
               </div>
               <div class="campo campo--completo">
                 <label for="post-suplente-telefono">Teléfono / WhatsApp del enlace suplente <span class="obligatorio">*</span></label>
-                <input id="post-suplente-telefono" name="post-suplente-telefono" type="text" placeholder="0412-0000000" required>
+                <input id="post-suplente-telefono" name="post-suplente-telefono" type="tel" maxlength="18" placeholder="0412-0000000" required>
               </div>
               <p class="form-bloque">3 · Área de atención solicitada</p>
               <fieldset class="campo campo--completo">
-                <legend>Marque las áreas en las que el sector requiere apoyo institucional</legend>
+                <legend>Marque las áreas en las que el sector requiere apoyo institucional <span class="obligatorio">*</span></legend>
                 <div class="opciones">
                   <label class="opcion"><input type="checkbox" name="post-ejes" value="EJE 1 · Diagnóstico técnico e infraestructura comunitaria"><span>EJE 1 · Diagnóstico técnico e infraestructura comunitaria</span></label>
                   <label class="opcion"><input type="checkbox" name="post-ejes" value="EJE 2 · Responsabilidad social empresarial (RSE) y capacitación"><span>EJE 2 · Responsabilidad social empresarial (RSE) y capacitación</span></label>
                   <label class="opcion"><input type="checkbox" name="post-ejes" value="EJE 3 · Infraestructura deportiva y juegos comunitarios"><span>EJE 3 · Infraestructura deportiva y juegos comunitarios</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="post-ejes" role="alert"></p>
               </fieldset>
               <p class="form-bloque">4 · Problemática o propuesta</p>
               <div class="campo campo--completo">
                 <label for="post-descripcion">Descripción breve de la problemática o propuesta <span class="obligatorio">*</span></label>
-                <textarea id="post-descripcion" name="post-descripcion" placeholder="Necesidad prioritaria del sector o espacio a postular" required></textarea>
+                <textarea id="post-descripcion" name="post-descripcion" maxlength="1500" placeholder="Necesidad prioritaria del sector o espacio a postular" required></textarea>
               </div>
               <p class="form-bloque">5 · Corresponsabilidad comunitaria</p>
               <fieldset class="campo campo--completo">
@@ -502,10 +527,11 @@
                   <label class="opcion"><input type="radio" name="post-voluntarios" value="Sí" required><span>Sí</span></label>
                   <label class="opcion"><input type="radio" name="post-voluntarios" value="No"><span>No</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="post-voluntarios" role="alert"></p>
               </fieldset>
               <div class="campo campo--completo">
                 <label for="post-voluntarios-cantidad">Cantidad aproximada de voluntarios <span class="obligatorio">*</span></label>
-                <input id="post-voluntarios-cantidad" name="post-voluntarios-cantidad" type="text" placeholder="Ej. 25" inputmode="numeric" required>
+                <input id="post-voluntarios-cantidad" name="post-voluntarios-cantidad" type="text" maxlength="5" placeholder="Ej. 25" inputmode="numeric" required>
               </div>
               <fieldset class="campo campo--completo">
                 <legend>¿Existe algún espacio físico (casa comunal, escuela, cancha) disponible para dictar los talleres de capacitación? <span class="obligatorio">*</span></legend>
@@ -513,10 +539,11 @@
                   <label class="opcion"><input type="radio" name="post-espacio" value="Sí" required><span>Sí</span></label>
                   <label class="opcion"><input type="radio" name="post-espacio" value="No"><span>No</span></label>
                 </div>
+                <p class="error-grupo" data-error-grupo="post-espacio" role="alert"></p>
               </fieldset>
               <div class="campo campo--completo">
                 <label for="post-espacio-cual">Indique cuál espacio <span class="obligatorio">*</span></label>
-                <input id="post-espacio-cual" name="post-espacio-cual" type="text" placeholder="Ej. Casa comunal Bella Vista" required>
+                <input id="post-espacio-cual" name="post-espacio-cual" type="text" maxlength="150" placeholder="Ej. Casa comunal Bella Vista" required>
               </div>
           </div>
           <div class="formulario__pie">
@@ -578,17 +605,20 @@
     </div>
   </footer>
 
-  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.7 1.8.8 1.9c.1.1.1.3 0 .5s-.2.4-.3.6l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1s.7-.9.9-1.2c.2-.3.4-.2.7-.1l1.8.9c.3.2.5.2.6.4.1.1.1.7-.1 1.2z"/></svg>
   </a>
 
-  <!-- Librería oficial de Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
+  <!-- Librería oficial de Supabase (versión fijada + Subresource Integrity) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js" integrity="sha384-A97u3Qnt9GZHURO9YJZRe7VQgGUeFzcv6I1oIGnUTxQrCxnpQMwR0/G8F2zt9abZ" crossorigin="anonymous" defer></script>
+
   <!-- Conexión centralizada -->
   <script src="supabase-config.js" defer></script>
 
-  <!-- Tu archivo JavaScript de programas -->
+  <!-- Utilidades compartidas de seguridad y validación -->
+  <script src="security-utils.js" defer></script>
+
+  <!-- Archivo JavaScript de programas -->
   <script src="programas.js" defer></script>
 
 </body>

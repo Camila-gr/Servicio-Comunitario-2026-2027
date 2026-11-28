@@ -901,3 +901,60 @@ fieldset.campo { border: 0; padding: 0; margin: 0; min-width: 0; }
 
 .servicio-lista__acciones { display: flex; justify-content: flex-end; margin-top: 0.85rem; }
 .btn--chico { padding: 0.5rem 1rem; font-size: 0.82rem; }
+
+/* ---------- Utilidades y seguridad de formularios ---------- */
+.mt-1 { margin-top: 0.9rem; }
+.mt-lg { margin-top: 1.5rem; }
+.is-hidden { display: none; }
+
+.campo-verificacion {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.aviso-error {
+  display: none;
+  background: #fdecea;
+  border: 1px solid #f5c6c2;
+  color: #7f1d1d;
+  border-radius: 0.7rem;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1.1rem;
+}
+.aviso-error.is-visible { display: block; }
+.aviso-error strong { display: block; font-size: 1rem; margin-bottom: 0.2rem; }
+.aviso-error p { margin: 0; font-size: 0.9rem; }
+
+.error-msg {
+  color: #c0392b;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+.error-msg:empty { display: none; }
+
+.error-grupo {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: #c0392b;
+}
+.error-grupo:empty { display: none; }
+
+.campo input:disabled,
+.campo select:disabled {
+  background: var(--gris-100);
+  color: var(--gris-500);
+}
+
+.campo input.input-invalido,
+.campo select.input-invalido,
+.campo textarea.input-invalido {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.16);
+}
+

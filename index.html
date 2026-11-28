@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Cámara de la Construcción del Edo. Falcón</title>
   <meta name="description" content="Cámara de la Construcción del Edo. Falcón, Organización sin fines de lucro que agrupa empresas, profesionales y proveedores del sector construcción del Estado Falcón.">
   <meta name="keywords" content="Cámara de Construcción Falcón, construcción Falcón, asociación civil, gremio construction, Punto Fijo, capital humano, obra pública, obra privada">
@@ -60,7 +62,7 @@
   <div class="topbar">
     <div class="container topbar__inner">
       <div class="topbar__grupo">
-        <a href="correo:cvconstruccionfalcon@gmail.com">
+        <a href="mailto:cvconstruccionfalcon@gmail.com">
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           cvconstruccionfalcon@gmail.com
         </a>
@@ -160,17 +162,20 @@
             participar en el desarrollo y protección del mercado de la construcción en Falcón.
           </p>
         </div>
+      </div>
+    </section>
 
  <!-- ===== Historia ===== -->
     <section class="section">
       <div class="container">
-        <div class="grid grid--2" style="align-items:start">
+        <div class="grid grid--2 grid--inicio">
           <div class="reveal">
             <span class="eyebrow">Nuestra historia</span>
             <h2>67 años de trayectoria gremial</h2>
+          </div>
 
           <div class="reveal">
-            <h3 style="margin-bottom:1.25rem">Hitos de nuestra trayectoria</h3>
+            <h3 class="mb-md">Hitos de nuestra trayectoria</h3>
             <ol class="tiempo">
               <li>
                 <span class="tiempo__anio">1959 · Fundación</span>
@@ -300,12 +305,14 @@
             <span class="eyebrow">Conoce a</span>
             <h2 id="presidente-titulo">Ing. Orlando Dávila</h2>
             <p class="lead">Presidente de la Cámara de la Construcción del Estado Falcón. Su liderazgo se ha enfocado en: </p>
-            <li>El desarrollo sostenible del sector construcción en el Estado Falcón.</li>
-            <li>La defensa a las empresas que ejecutaron obras a entidades públicas estableciendo rutas de resarcimiento de capital de trabajo.</li>
-            <li>Participación en las ordenanzas municipales para la mejora de las condiciones del sector construcción.</li>
-            <li>Incorporación de programas de desarrollo urbano, comunitario y deportivo.</li>
-            <li>Establecimiento de convenios con instituciones de educación superior como La Universidad del Zulia (LUZ)</li>
-            <li>Creación de alianzas con organizaciones como La Cámara de Comercio de Curazao y San Nicolás Aruba.</li>
+            <ul>
+              <li>El desarrollo sostenible del sector construcción en el Estado Falcón.</li>
+              <li>La defensa a las empresas que ejecutaron obras a entidades públicas estableciendo rutas de resarcimiento de capital de trabajo.</li>
+              <li>Participación en las ordenanzas municipales para la mejora de las condiciones del sector construcción.</li>
+              <li>Incorporación de programas de desarrollo urbano, comunitario y deportivo.</li>
+              <li>Establecimiento de convenios con instituciones de educación superior como La Universidad del Zulia (LUZ)</li>
+              <li>Creación de alianzas con organizaciones como La Cámara de Comercio de Curazao y San Nicolás Aruba.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -362,7 +369,7 @@
     </div>
   </footer>
 
-  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <a class="boton-whatsapp" href="https://wa.me/584126698565?text=Hola%2C%20deseo%20informaci%C3%B3n%20sobre%20la%20C%C3%A1mara%20de%20Construcci%C3%B3n%20Falc%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
     <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.3 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.7 1.8.8 1.9c.1.1.1.3 0 .5s-.2.4-.3.6l-.5.5c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1s.7-.9.9-1.2c.2-.3.4-.2.7-.1l1.8.9c.3.2.5.2.6.4.1.1.1.7-.1 1.2z"/></svg>
   </a>
 
